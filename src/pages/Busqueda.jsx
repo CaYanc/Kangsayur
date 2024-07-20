@@ -9,10 +9,13 @@ import cart2 from "../components/principal/img/cart2.png";
 import cart3 from "../components/principal/img/cart3.png";
 import cart4 from "../components/principal/img/cart4.png";
 import Popup from "./Popup";
-import CounterContext from "../context/CounterContext";
+import { userContext } from "../context/userContext";
 
 const Busqueda = () => {
   // estado para abrir popup
+
+  const {sumar, counter} = useContext(userContext)
+
 
   const [estado, setEstado] = useState(false);
   const [imagen, setImagen] = useState();
@@ -38,12 +41,12 @@ const Busqueda = () => {
           />
         </div>
 
-        <div className="relative w-[40px] h-[40px]    flex items-center justify-center text-[1000%] text-black">
+        <Link to={'/carrito'} className="relative w-[40px] h-[40px]    flex items-center justify-center text-[1000%] text-black">
           <CgShoppingCart />
           <div className="absolute top-[-0px] right-0 bg-[#e62323] w-[15px] h-[15px] text-[10px] text-white rounded-[50%] flex justify-evenly items-center ">
-            1
+            {counter}
           </div>
-        </div>
+        </Link>
       </div>
 
       <div className="border-b border-b-black pb-[20px] w-[120%] relative left-[-25px]">

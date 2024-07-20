@@ -11,6 +11,8 @@ const Registro = () => {
     <div id='registro' 
     className='bg-[#fff] w-[100vw] h-[100vh] p-[25px] flex flex-col items-center justify-around relative'
     >
+
+      <Link to={'/'} className='text-white z-[300] absolute top-[10px] right-[10px]' >Omitir</Link>
         
         <div id='art1' 
         className='relative flex flex-col items-center gap-[40px] '
@@ -32,7 +34,7 @@ const Registro = () => {
 
           <Link  className='btn_primary text-center' to="/Login">Login</Link>
 
-          <Link  className='btn_secundary text-center' to="/Login">Register</Link>
+          <Link  className='btn_secundary text-center' to="/SingUp">Register</Link>
 
           <div 
           className='py-[10px] relative w-[100%]'

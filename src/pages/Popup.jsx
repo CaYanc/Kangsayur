@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FaChevronLeft } from "react-icons/fa";
 import { IoHeartOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import { userContext } from "../context/userContext";
 
 const Popup = ({
   setEstado,
@@ -16,6 +17,9 @@ const Popup = ({
   const eventSubir = ()=>{
     setSubir(!subir)
   }
+
+   const {counter, sumar, restar} = useContext(userContext)
+
   return (
     <div className="fixed z-[200] top-0 left-0 w-[100vw] h-[100vh] bg-white" >
       <div id="img" className="relative h-[50%] bg-black w-[100%] ">
@@ -115,12 +119,12 @@ const Popup = ({
           <div className="flex gap-[10px] items-center ">
             <button className="btn-contador">-</button>
             <div className="bg-[#81c49c94] font-bold text-[#4CAD73] px-[10px] py-[1px] rounded-[5px] text-[15px] h-[50px] w-[50px] flex items-center justify-center">
-              1
+              0
             </div>
             <button className="btn-contador">+</button>
           </div>
 
-          <button className="btn_primary">Add to Cart</button>
+          <button className="btn_primary" onClick={sumar}>Add to Cart</button>
         </div>
       </div>
     </div>

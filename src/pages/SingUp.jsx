@@ -4,34 +4,30 @@ import { FaChevronLeft } from "react-icons/fa";
 import { IoEye } from "react-icons/io5";
 import { IoMdEyeOff } from "react-icons/io";
 import { Link, useNavigate } from "react-router-dom";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../Firebase.js";
 
-const Login = () => {
+const SingUp = () => {
   // funcion de registro
   const registro = (password, email) => {
-    signInWithEmailAndPassword(auth, email, password)
+    createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        navigate("/");
+        navigate('/login')
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        alert("No existe este usuario")
+        alert('esta cuenta ya existe ')
+
       });
   };
   // funcion de registro
 
   // estados de datos recolectados
-  const navigate = useNavigate();
-  const [user, setUser] = useState(true);
   const [password, setPassword] = useState();
   const [email, setEmail] = useState();
+  const navigate = useNavigate()
   // estados de datos recolectados
 
   return (
@@ -54,8 +50,8 @@ const Login = () => {
           className="w-[650px] h-[600px] rounded-[50%] absolute bg-[#4CAD73] top-[-100%] left-[-185%] "
         ></div>
 
-        <p className="text-[55px] font-semibold absolute top-[45%] left-[-55%] text-[#fff]">
-          Login
+        <p className="text-[55px] font-semibold absolute top-[35%] left-[-65%] text-[#fff]">
+          SingUp
         </p>
         <figure className="relative z-[100] left-[40%]">
           <img src={imgLogin} alt="" />
@@ -104,14 +100,14 @@ const Login = () => {
           className="btn_primary"
           onClick={() => registro(password, email)}
         >
-          Login
+          SingUp
         </button>
 
         <button className="text-[#4CAD73] mb-[60px]" href="">
           <p>
-            No have an account?{" "}
-            <Link to={"/SingUp"} className="font-bold">
-              SingUp
+            have an account?
+            <Link to={"/login"} className="font-bold">
+              login
             </Link>
           </p>
         </button>
@@ -120,4 +116,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SingUp;
